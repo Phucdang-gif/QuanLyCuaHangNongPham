@@ -21,16 +21,24 @@ class ChiTietHoaDon {
     public SanPham getSanPham(){
         return sanPham;
     }
+    
     public void setSanPham(SanPham sanPham){
         this.sanPham = sanPham;
     }
+    
     public int getSoLuongMua(){
         return soLuongMua;
     }
+    
     public void setSoLuongMua(int soLuongMua){
         this.soLuongMua=soLuongMua;
     }
+    
     public double getThanhTien(){
         return sanPham.getGia() * soLuongMua;
+    }
+    
+    public double getKhoiLuong(){
+        return SanPham.getKhoiLuong();
     }
 }
