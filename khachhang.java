@@ -10,8 +10,9 @@ public class KhachHang {
     private String diaChi;
     private String email;
 
-    public KhachHang(String maKH, String tenKH, String soDienThoai, String diaChi, String email) {
+    public KhachHang(String maKH, String hoKH, String tenKH, String soDienThoai, String diaChi, String email) {
         this.maKH = maKH;
+        this.hoKH = hoKH;
         this.tenKH = tenKH;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
@@ -66,3 +67,4 @@ public class KhachHang {
         this.email = email;
     }
 }
+
