@@ -1,7 +1,10 @@
 package test;
 
+import java.io.*;
+
 public class KhachHang {
     private String maKH;
+    private String hoKH;
     private String tenKH;
     private String soDienThoai;
     private String diaChi;
@@ -29,6 +32,14 @@ public class KhachHang {
 
     public void setTenKH(String tenKH) {
         this.tenKH = tenKH;
+    }
+
+    public String getHoKH() {
+        return hoKH;
+    }
+
+    public void setHoKH(String hoKH) {
+        this.hoKH = hoKH;
     }
 
     public String getSoDienThoai() {
