@@ -19,6 +19,18 @@ public class NhanVien {
         hoNhanVien=nv1.hoNhanVien;
         luongNhanVien=nv1.luongNhanVien;
     }
+     public int getMNV(){return maNhanVien;}
+    public string getTenNhanVien(){return tenNhanVien;}
+    public string getHoNhanVien(){return hoNhanVien;}
+    public int getLNV(){return luongNhanVien;}
+    public void setLNV(int luongNhanVien){
+        this.luongNhanVien=luongNhanVien;
+    }
+    public void setNV(int maNhanVien,string tenNhanVien,string hoNhanVien){
+        this.maNhanVien=maNhanVien;
+       this.tenNhanVien=tenNhanVien; 
+        this.hoNhanVien=hoNhanVien;
+    }
     public nhapNhanVien(){
         Scanner sc=new Scanner(System.in);
         maNhanVien=sc.nextInt();
@@ -35,3 +47,4 @@ public class NhanVien {
     }
 
 }
+
