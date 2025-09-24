@@ -1,16 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package test;
 
-/**
- *
- * @author pc
- */
-import java.io.*;
-import java.util.Arrays;
-import java.util.ArrayList;
 class HoaDon{
     private String maHD;
     private String ngayLap;
@@ -18,7 +7,7 @@ class HoaDon{
     private NhanVien nhanVienLap;
     private double tongTien;
     private ThanhToan hinhThuc;
-    private ArrayList<ChiTietHoaDon> danhsachCTHD;
+    private danhSachCTHD dsCTHD;
     
     
     public HoaDon(String maHD,String ngayLap, KhachHang khachHang, NhanVien nhanVienLap){
@@ -26,7 +15,7 @@ class HoaDon{
         this.ngayLap = ngayLap;
         this.khachHang = khachHang;
         this.nhanVienLap = nhanVienLap;
-        this.danhsachCTHD = new ArrayList<>();
+        this.dsCTHD = new danhSachCTHD();
         this.tongTien = 0;
     }
     
@@ -59,19 +48,6 @@ class HoaDon{
         this.nhanVienLap = nhanVienLap;
     }
     
-    public void themSP (SanPham sp, int soLuongMua){
-        ChiTietHoaDon cthd = new ChiTietHoaDon(sp,soLuongMua);
-        danhsachCTHD.add(cthd);
-    }
-    
-    public void xoaSP(String maSP){
-        for (int i=0;i<danhsachCTHD.size();i++){
-            if (danhsachCTHD.get(i).getSanPham().equals(maSP)){
-                danhsachCTHD.remove(i);
-                break;
-            }
-        }
-    }
     
     public double tinhTongTien(){
         tongTien = 0;
@@ -88,14 +64,7 @@ class HoaDon{
        System.out.println("Khách hàng: " + khachHang.getTenKH());
        System.out.println("Nhân viên lập: " + nhanVienLap.getTenNV());
        System.out.println("Danh sách sản phẩm:");
-       for (int i = 0; i < danhsachCTHD.size(); i++) {
-           ChiTietHoaDon cthd = danhsachCTHD.get(i);
-           SanPham sp = cthd.getSanPham();
-           System.out.println(" - " + sp.getTenSP() 
-                             + " | SL: " + cthd.getSoLuongMua()                               
-                             + " | Giá: " + sp.getGia()
-                             + " | Thành tiền: " + cthd.getThanhTien());
-        }
-        System.out.println("Tổng tiền: " + tinhTongTien());
+       dsCTHD.xuatDS();
+       System.out.println("Tổng tiền: " + tinhTongTien());
     }
 }
