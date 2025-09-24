@@ -51,8 +51,8 @@ class HoaDon{
     
     public double tinhTongTien(){
         tongTien = 0;
-        for (int i=0;i<danhsachCTHD.size();i++){
-            ChiTietHoaDon cthd = danhsachCTHD.get(i);
+        for (int i=0;i<dsCTHD.size();i++){
+            ChiTietHoaDon cthd = dsCTHD.get(i);
             tongTien += cthd.getThanhTien();
         }
         return tongTien;
@@ -68,3 +68,4 @@ class HoaDon{
        System.out.println("Tổng tiền: " + tinhTongTien());
     }
 }
+
