@@ -1,21 +1,23 @@
 package test;
 
 class HoaDon{
+    private static int count = 0;
     private String maHD;
     private String ngayLap;
     private KhachHang khachHang;
     private NhanVien nhanVienLap;
     private double tongTien;
     private ThanhToan hinhThuc;
-    private danhSachCTHD dsCTHD;
+    private DanhSachCTHD dsCTHD;
     
     
-    public HoaDon(String maHD,String ngayLap, KhachHang khachHang, NhanVien nhanVienLap){
-        this.maHD = maHD;
+    public HoaDon(String maHD,String ngayLap, KhachHang khachHang, NhanVien nhanVienLap, ThanhToan hinhThuc){
+        this.maHD = "HD"+(++count);
         this.ngayLap = ngayLap;
         this.khachHang = khachHang;
         this.nhanVienLap = nhanVienLap;
-        this.dsCTHD = new danhSachCTHD();
+        this.hinhThuc = hinhThuc;
+        this.dsCTHD = new DanhSachCTHD();
         this.tongTien = 0;
     }
     
@@ -48,24 +50,34 @@ class HoaDon{
         this.nhanVienLap = nhanVienLap;
     }
     
+    public void themSP(SanPham sp, int soLuongMua) {
+        dsCTHD.themSP(sp, soLuongMua);
+    }
+
+    public void xoaSP(String maSP) {
+        dsCTHD.xoaSP(maSP);
+    }
     
     public double tinhTongTien(){
-        tongTien = 0;
-        for (int i=0;i<dsCTHD.size();i++){
-            ChiTietHoaDon cthd = dsCTHD.get(i);
-            tongTien += cthd.getThanhTien();
-        }
+        tongTien = dsCTHD.tinhTongTien();
         return tongTien;
     }
     
+    public static int getSoHoaDontao(){
+        return count;
+    }
+    
+    public void thanhToanHoaDon(){
+        hinhThuc.thanhToan(tongTien);
+    }
     public void xuatHoaDon() {
-       System.out.println("=== HÓA ĐƠN " + maHD + " ===");
-       System.out.println("Ngày lập: " + ngayLap);
-       System.out.println("Khách hàng: " + khachHang.getTenKH());
-       System.out.println("Nhân viên lập: " + nhanVienLap.getTenNV());
-       System.out.println("Danh sách sản phẩm:");
+       System.out.println("=== HOA DON " + maHD + " ===");
+       System.out.println("Ngay lap: " + ngayLap);
+       System.out.println("Khach hang: " + khachHang.getTenKH());
+       System.out.println("Nhan vien lap: " + nhanVienLap.getTenNV());
+       System.out.println("Hinh thuc thanh toan: "+ hinhThuc);
+       System.out.println("Danh sach san pham:");
        dsCTHD.xuatDS();
-       System.out.println("Tổng tiền: " + tinhTongTien());
+       System.out.println("Tong tien: " + tinhTongTien());
     }
 }
-
