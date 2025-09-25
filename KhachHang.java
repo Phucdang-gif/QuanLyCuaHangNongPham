@@ -1,6 +1,6 @@
 package test;
 
-import java.io.*;
+import java.io.Scanner;
 
 public class KhachHang {
     private String maKH;
@@ -66,6 +66,29 @@ public class KhachHang {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void nhap() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập mã khách hàng: ");
+        maKH = sc.nextLine();
+        System.out.print("Nhập họ khách hàng: ");
+        hoKH = sc.nextLine();
+        System.out.print("Nhập tên khách hàng: ");
+        tenKH = sc.nextLine();
+        System.out.print("Nhập số điện thoại: ");
+        soDienThoai = sc.nextLine();
+        System.out.print("Nhập địa chỉ: ");
+        diaChi = sc.nextLine();
+        System.out.print("Nhập email: ");
+        email = sc.nextLine();
+    }
+
+    public void xuat() {
+        System.out.println("===== Thông tin khách hàng =====");
+        System.out.println("Mã KH: " + maKH);
+        System.out.println("Họ tên: " + hoKH + " " + tenKH);
+        System.out.println("SĐT: " + soDienThoai);
+        System.out.println("Địa chỉ: " + diaChi);
+        System.out.println("Email: " + email);
+    }
 }
-
-
