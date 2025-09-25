@@ -1,14 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package test;
 
-/**
- *
- * @author pc
- */
-import java.io.*;
 class ChiTietHoaDon {
     private SanPham sanPham;
     private int soLuongMua;
@@ -17,7 +8,6 @@ class ChiTietHoaDon {
         this.sanPham = sanPham;
         this.soLuongMua = soLuongMua;
     }
-    
     public SanPham getSanPham(){
         return sanPham;
     }
@@ -39,6 +29,11 @@ class ChiTietHoaDon {
     }
     
     public double getKhoiLuong(){
-        return SanPham.getKhoiLuong();
+        return sanPham.getKhoiLuong();
+    }
+    public void xuat (){
+        sanPham.xuat();
+        System.out.print("So luong: " + soLuongMua);
+        System.out.print("Thanh Tien: " + getThanhTien()); // chưa có đơn giá(Sản Phẩm)
     }
 }
