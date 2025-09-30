@@ -13,22 +13,21 @@ import java.util.ArrayList;
 class ThanhToan {
     private KhachHang khachHang;
     private NhanVien nhanVien;
-    private ArrayList<ChiTietHoaDon> gioHang;
+    private DanhSachCTHD gioHang;
     private String phuongThucThanhToan;
     private boolean xacNhan;
 
     public ThanhToan(KhachHang khachHang, NhanVien nhanVien) {
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
-        this.gioHang = new ArrayList<>();
+        this.gioHang = new DanhSachCTHD();
         this.phuongThucThanhToan = "";
         this.xacNhan = false;
     }
 
     
     public void themSanPham(SanPham sp, int soLuong) {
-        ChiTietHoaDon cthd = new ChiTietHoaDon(sp, soLuong);
-        gioHang.add(cthd);
+        gioHang.themSP(sp,soLuong);
     }
 
     // chọn phương thức thanh toán
@@ -40,8 +39,9 @@ class ThanhToan {
     // tạo hóa đơn (sau khi chọn phương thức)
     public HoaDon taoHoaDon(String maHD, String ngayLap) {
         HoaDon hd = new HoaDon(maHD, ngayLap, khachHang, nhanVien);
-        for (ChiTietHoaDon cthd : gioHang) {
-            hd.themSP(cthd.getSanPham(), cthd.getSoLuongMua());
+        for (int i = 0 ; i < gioHang.getSoLoaiSP() ; i++){
+            ChiTietHoaDon cthd = gioHang.getCTHD(i);
+            hd.themSP(cthd.getSANPHAM(), cthd.getSoLuongMua());
         }
         return hd;
     }
@@ -57,3 +57,4 @@ class ThanhToan {
         return dongY;
     }
 }
+
