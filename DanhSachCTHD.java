@@ -1,22 +1,20 @@
 
 package test;
-
+import java.util.Arrays;
 class DanhSachCTHD {
     private ChiTietHoaDon[] ds;
     private int n;          
     private static final int MAX = 100;  
 
     public DanhSachCTHD() {
-        ds = new ChiTietHoaDon[MAX];
+        ds = new ChiTietHoaDon[0];
         n = 0;
     }
 
     public void themCTHD(ChiTietHoaDon cthd) {
-        if (n < MAX) {
-            ds[n++] = cthd;
-        } else {
-            System.out.println("Danh sach chi tiet day!");
-        }
+        ds = Arrays.copyOf(ds,n+1);
+        ds[n] = cthd;
+        n++;
     }
     public void themSP(SanPham sp, int soLuongMua) {
         ChiTietHoaDon cthd = new ChiTietHoaDon(sp, soLuongMua);
@@ -26,10 +24,9 @@ class DanhSachCTHD {
     public void xoaSP(String maSP) {
         for (int i = 0; i < n; i++) {
             if (ds[i].getSanPham().getMaSP().equals(maSP)) {
-                for (int j = i; j < n - 1; j++) {
-                    ds[j] = ds[j + 1];
-                }
+                System.arraycopy(ds,i+1,ds,i,n-i-1);
                 n--;
+                ds = Arrays.copyOf(ds,n);
                 break;
             }
         }
