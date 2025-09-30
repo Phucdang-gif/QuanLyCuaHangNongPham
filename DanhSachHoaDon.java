@@ -1,40 +1,36 @@
 package test;
 
-
+import java.util.Arrays;
 class DanhSachHoaDon {
     private HoaDon[] ds;
-    private int soLuong;
+    private int n;
     private static final int MAX = 100; 
 
     public DanhSachHoaDon() {
-        ds = new HoaDon[MAX];
-        soLuong = 0;
+        ds = new HoaDon[0];
+        n = 0;
     }
 
     public void themHoaDon(HoaDon hd) {
-        if (soLuong < MAX) {
-            ds[soLuong++] = hd;
-        } else {
-            System.out.println("Danh sach hoa don da day!");
-        }
+        ds = Arrays.copyOf(ds,n+1);
+        ds[n] = hd;
+        n++;
     }
 
     public void xoaHoaDon(String maHD) {
-        for (int i = 0; i < soLuong; i++) {
+        for (int i = 0; i < n; i++) {
             if (ds[i].getMaHD().equals(maHD)) {
-                for (int j = i; j < soLuong - 1; j++) {
-                    ds[j] = ds[j + 1];
-                }
-                ds[--soLuong] = null;
-                System.out.println("Da xoa hoa don " + maHD);
-                return;
+                System.arraycopy(ds,i+1,ds,i,n-i-1);
+                n--;
+                ds = Arrays.copyOf(ds,n);
+                break;
             }
         }
         System.out.println("Khong tim thay hoa don " + maHD);
     }
 
     public HoaDon timHoaDon(String maHD) {
-        for (int i = 0; i < soLuong; i++) {
+        for (int i = 0; i < n; i++) {
             if (ds[i].getMaHD().equals(maHD)) {
                 return ds[i];
             }
@@ -43,14 +39,14 @@ class DanhSachHoaDon {
     }
 
     public void xuatDS() {
-        for (int i = 0; i < soLuong; i++) {
+        for (int i = 0; i < n; i++) {
             ds[i].xuatHoaDon();
             System.out.println("--------------------------");
         }
     }
 
     public int getSize() {
-        return soLuong;
+        return n;
     }
     
 }
